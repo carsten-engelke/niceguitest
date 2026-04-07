@@ -2,7 +2,14 @@
 from niceguitest.logic import myTestAdd
 
 def main() -> None:
-    print("Empty main function due to problems with multiprocessing and nicegui. Please run the GUI app using the cli entry point instead.")
+    # This entry point is used when the user runs the command "niceguitest-gui" after installing the package with the "gui" extra.
+    try:
+        from nicegui import ui
+        run_gui_app(ui)
+    except ImportError:
+        print("NiceGUI is not installed. Please install the 'gui' extra to use the GUI features with 'pip install niceguitest[gui]' .")
+        from niceguitest.cli import main as cli_main
+        cli_main()
 
 def run_gui_app(ui) -> None:
     from niceguitest import logic
@@ -21,12 +28,5 @@ def calculate_sum(a_input, b_input, result_label) -> None:
         result_label.set_text(f"Result: {result}")
     except ValueError:
         result_label.set_text("Please enter valid integers.")
-
-# This entry point is used when the user runs the command "niceguitest-gui" after installing the package with the "gui" extra.
-try:
-    from nicegui import ui
-    run_gui_app(ui)
-except ImportError:
-    print("NiceGUI is not installed. Please install the 'gui' extra to use the GUI features with 'pip install niceguitest[gui]' .")
-    from niceguitest.cli import main as cli_main
-    cli_main()
+if __name__ in {"__main__", "__mp_main__"}:
+    main()
