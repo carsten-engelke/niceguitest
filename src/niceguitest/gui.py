@@ -28,5 +28,6 @@ def calculate_sum(a_input, b_input, result_label) -> None:
         result_label.set_text(f"Result: {result}")
     except ValueError:
         result_label.set_text("Please enter valid integers.")
+
 if __name__ in {"__main__", "__mp_main__"}:
     main()
