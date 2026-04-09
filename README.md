@@ -1,5 +1,8 @@
 Demonstration of nicegui failure to be called by Entry Points.
 
+SOLUTION: When using an entry point to start nicegui app set reload=False. Also load the ui in a root function as reload=False triggers an internal server error otherwise.
+Now working!
+
 Steps to perform:
 
     mkdir niceguitest
