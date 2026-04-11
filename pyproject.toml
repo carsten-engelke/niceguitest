@@ -11,7 +11,7 @@ dependencies = []
 
 [project.scripts]
 niceguitest = "niceguitest.cli:main"
-niceguitest-gui = "niceguitest.gui:main"
+niceguitest-gui = "niceguitest.gui_launcher:main"
 
 [project.optional-dependencies]
 gui = [
